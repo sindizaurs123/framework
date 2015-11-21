@@ -1,0 +1,72 @@
+<?php global $core; $template = $core->templates(); ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><?=$template->getTitle()?></title>
+	<link rel="stylesheet" href="/assets/css/flatstrap.css" type="text/css" />
+	<link rel="stylesheet" href="/css/global.css" type="text/css" />
+
+	<link rel="apple-touch-icon" sizes="57x57" href="/assets/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/assets/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/assets/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/assets/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/assets/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/assets/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/assets/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+	<link rel="manifest" href="/assets/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/assets/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<?=$template->getCSS()?>
+	<?=$template->getJS('head')?>
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/"><?=$template->getBlock('projectName')?></a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<?=$template->getView('nav-top')?>
+		</div>
+	</div>
+</nav>
+
+<div id="page">
+	<?=$template->getView('errorMessage')?>
+	<?=$template->printTemplate()?>
+</div>
+
+<?php
+	if ($core->dev()->isDeveloperMode() && $core->url('?dev'))
+	{
+		echo '<div class="container">
+							<div id="footer-debug" class="row large-12 columns panel">';
+		$core->debug(1);
+		echo '</div>
+							</div>';
+	}
+?>
+
+<?=$this->getView('footer')?>
+
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/flatstrap.js"></script>
+<?=$template->getJS('foot')?>
+</body>
+</html>

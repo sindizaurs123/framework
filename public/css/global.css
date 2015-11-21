@@ -1,0 +1,42 @@
+p {
+	font-size: 13px !important;
+	margin-bottom: 5px !important;
+}
+
+#page {
+	margin-top: 70px;
+}
+
+.panel {
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+	font-size: 13px;
+	line-height: 20px;
+}
+
+#footer {
+	max-width: 1140px;
+}
+
+@media screen and (min-width: 975px) and (max-width: 1200px) {
+	#footer {
+		max-width: 940px;
+	}
+}
+
+@media screen and (min-width: 750px) and (max-width: 980px) {
+	#footer {
+		max-width: 720px;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	#footer {
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+}
+
+.text-center {
+	text-align: center;
+}

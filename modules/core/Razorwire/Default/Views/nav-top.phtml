@@ -1,0 +1,137 @@
+<?php global $core; $template = $core->templates(); $_menubar = $core->cms()->getMenubar(); ?>
+
+<?php
+	$i = 0;
+	foreach ($_menubar as $_name => $_variables)
+	{
+		$i++;
+
+		if (isset($_variables['childs']))
+		{
+
+			$_dropdownMenu = '';
+			$d = 0;
+
+			foreach ($_variables['childs'] as $_dropdown => $_dropdownVariables)
+			{
+				if ($_dropdownVariables['id'])
+				{
+					$id = 'id="'.$_dropdownVariables['id'].'"';
+				}
+				else
+				{
+					$id = '';
+				}
+
+				if ($_dropdownVariables['href'] == 'divider')
+				{
+					$_dropdownMenu .= '<li class="divider '.$_dropdownVariables['class'].'" '.$id.'></li>';
+				}
+
+				else
+				{
+					$_dropdownMenu = $_dropdownMenu .
+						'<li><a class="'.$_dropdownVariables['class'].'" '.$id.' title="'.$_dropdownVariables['title'].'" href="'.$_dropdownVariables['href'].'">'.$_dropdownVariables['title'].'</a></li>';
+				}
+
+			}
+
+			if (isset($_variables['href']))
+			{
+
+				if ($_variables['id'])
+				{
+					$id = 'id="'.$_variables['id'].'"';
+				}
+				else
+				{
+					$id = '';
+				}
+
+				if ($_variables['position'] == 'left')
+				{
+					$_left[$i] = '
+								<li class="dropdown">
+									<a data-toggle="dropdown" class="dropdown-toggle '.$_variables['class'].'" '.$id.' title="'.$_variables['title'].'" href="'.$_variables['href'].'">'.$_variables['title'].' <span class="caret"></span></a>
+
+									<ul class="dropdown-menu" role="menu">
+										'.$_dropdownMenu.'
+									</ul>
+								</li>
+
+						';
+				}
+				elseif ($_variables['position'] == 'right')
+				{
+					$_right[$i] = '
+								<li class="dropdown">
+									<a data-toggle="dropdown" class="dropdown-toggle '.$_variables['class'].'" '.$id.' title="'.$_variables['title'].'" href="'.$_variables['href'].'">'.$_variables['title'].' <span class="caret"></span></a>
+
+									<ul class="dropdown-menu" role="menu">
+										'.$_dropdownMenu.'
+									</ul>
+								</li>
+
+						';
+				}
+			}
+		}
+		else
+		{
+			if ('/'.$core->URL(1) == $_variables['href'])
+			{
+				$isActive = ' class="active"';
+			}
+			else
+			{
+				$isActive = '';
+			}
+
+			if ($_variables['id'])
+			{
+				$id = 'id="'.$_variables['id'].'"';
+			}
+			else
+			{
+				$id = '';
+			}
+
+			if ($_variables['position'] == 'left')
+			{
+				$_left[$i] = '<li'.$isActive.'><a class="'.$_variables['class'].'" '.$id.' title="'.$_variables['title'].'" href="'.$_variables['href'].'">'.$_variables['title'].'</a></li>';
+			}
+			elseif ($_variables['position'] == 'right')
+			{
+				$_right[$i] = '<li'.$isActive.'><a class="'.$_variables['class'].'" '.$id.' title="'.$_variables['title'].'" href="'.$_variables['href'].'">'.$_variables['title'].'</a></li>';
+			}
+		}
+
+	}
+?>
+
+
+
+
+<ul class="nav navbar-nav">
+	<?php
+		if (isset($_left))
+		{
+			foreach ($_left as $i => $data)
+			{
+				echo $data;
+			}
+		}
+	?>
+</ul>
+
+<ul class="nav navbar-nav navbar-right">
+	<?php
+		if (isset($_right))
+		{
+			foreach ($_right as $i => $data)
+			{
+				echo $data;
+			}
+		}
+	?>
+</ul>

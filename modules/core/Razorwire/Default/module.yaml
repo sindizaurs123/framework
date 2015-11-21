@@ -1,0 +1,25 @@
+
+# Mandatory module configuration
+
+
+# autoload - If set to true, module will be loaded automatically.
+autoload      : false
+
+# disabled - If set to true, module won't be loaded (or even initialized, which means, overrides won't work)
+disabled      : true
+
+# priority - Sets modules' priority in autoload queue. Lower the better. 0 ignores priority, negative values are not accepted. Sums with vendors' priority.
+priority      : 0
+
+# version - Suggested to add, currently serves no purpose though. Version mask is 99999.99999.99999 (major).(minor).(release)
+version       : 1.0.0
+
+# cli - If set to true, module can be loaded from CLI
+cli           : false
+
+# cli_autoload - If set to true, module will be loaded automatically upon starting cli
+cli_autoload  : false
+
+# cli_only - If set to true, module can be loaded only from CLI
+cli_only      : false
+

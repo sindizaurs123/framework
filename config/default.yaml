@@ -1,0 +1,19 @@
+# environment dev|live - If set to dev, error reporting will be turned on.
+environment         : live
+
+# cookies_enabled - If set to false, application won't use sessions.
+cookies_enabled     : true
+
+# session_length - Length of session, in seconds. Has effect only if cookies are enabled.
+session_length      : 7200
+
+default_language    : en_GB
+fallback_language   : en_GB
+
+version             : 0.3.0
+note                : RC7
+appname             : razorwire
+developer           : sjohnson
+publisher           :
+
+default_cli_prompt  : "razorwire > "

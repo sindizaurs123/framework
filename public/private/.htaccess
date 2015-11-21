@@ -1,0 +1,5 @@
+# here you should put loginbox, that will read .htaccess file from this directory
+# since it need full path, I can't do that automatically for you
+# so, here you have "deny from all", to make /private stuff "private"
+
+deny from all

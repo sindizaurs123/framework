@@ -1,0 +1,6 @@
+
+# This is vendors' meta information file.
+# The only flag that will actually affect anything in programs flow is priority.
+
+# priority - sets vendors' priority. This flag is being summed with coderoot priority.
+priority    : 0

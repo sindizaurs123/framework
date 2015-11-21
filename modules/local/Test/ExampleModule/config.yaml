@@ -1,0 +1,5 @@
+
+# This configuration is completely optional, and it won't override anything set in module.yaml
+
+author      : SJohnson
+description : Just a test module to show how modules should be developed.
